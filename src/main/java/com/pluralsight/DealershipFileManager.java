@@ -1,8 +1,69 @@
 package com.pluralsight;
 
-public class DealershipFileManager {
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
-    public Dealership getDealership() {}
+public class DealershipFileManager {
+    public static final String FILE_NAME = "dealership.csv";
+
+    public Dealership getDealership() {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) {
+            System.out.println("No dealership file found. \n You will be prompted to enter details about your dealership very soon <3.");
+            return new Dealership(null, null, null);
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+            String line = "";
+            int lineNumber=2;
+
+            String dealershipInfo= reader.readLine();
+            if(dealershipInfo ==null){
+                reader.close();
+                return new Dealership(null,null,null);
+            }
+            String[] dealershipTokens = dealershipInfo.split("\\|");
+            if (dealershipTokens.length != 3) {
+                System.out.println("Invalid dealership format. You will have the opportunity to update this later.");
+                reader.close();
+                return new Dealership(null, null, null);
+            }
+            Dealership ds= new Dealership(dealershipTokens[0],dealershipTokens[1],dealershipTokens[2]);
+
+            while ((line = reader.readLine()) != null) {
+                String[] vehicleTokens = line.split("\\|");
+                if (vehicleTokens.length == 8) {
+                    try {
+                        int vin = Integer.parseInt(vehicleTokens[0]);
+                        int year = Integer.parseInt(vehicleTokens[1]);
+                        String make = vehicleTokens[2];
+                        String model = vehicleTokens[3];
+                        String vehicleType = vehicleTokens[4];
+                        String color = vehicleTokens[5];
+                        int odometer = Integer.parseInt(vehicleTokens[6]);
+                        double price = Double.parseDouble(vehicleTokens[7]);
+
+                        Vehicle v = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+                        ds.addVehicle(v);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error processing vehicle on line " + lineNumber + " - Skipping this vehicle.");
+                    }
+                } else {
+                    System.out.println("Invalid vehicle format on line " + lineNumber +
+                            " (expected 8 fields, got " + vehicleTokens.length + ")");
+                }
+                lineNumber++;
+            }
+            reader.close();
+            return ds;
+        } catch (Exception e) {
+            System.out.println("Error reading from file. ");
+            e.printStackTrace();
+            return new Dealership(null,null,null);
+        }
+    }
 
     public void saveDealership(Dealership dealership) {
     }
