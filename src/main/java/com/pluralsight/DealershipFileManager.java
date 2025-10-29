@@ -59,7 +59,7 @@ public class DealershipFileManager {
         } catch (Exception e) {
             System.out.println("Error reading from file. ");
             e.printStackTrace();
-            return new Dealership(null, null, null);
+            return new Dealership("", "", "");
         }
     }
 
