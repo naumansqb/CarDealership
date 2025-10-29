@@ -217,7 +217,14 @@ public class UserInterface {
         }while(max<=0);
         displayVehicles(dealership.getVehiclesByMileage(min,max));
     }
-    private void processGetByTypeRequest() {}
+    private void processGetByTypeRequest() {
+        String type="";
+        do{
+            System.out.println("Please enter the type: ");
+            type=scan.nextLine().trim();
+        }while(type.isEmpty());
+        displayVehicles(dealership.getVehiclesByType(type));
+    }
     private void processAllVehiclesRequest() {
         List<Vehicle> v= dealership.getAllVehicles();
         displayVehicles(v);
