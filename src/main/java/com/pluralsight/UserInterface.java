@@ -120,7 +120,32 @@ public class UserInterface {
             System.out.println(vehicle);
         }
     }
-    private void processGetByPriceRequest() {}
+    private void processGetByPriceRequest() {
+        double min=-1;
+        double max=-1;
+        do {
+            try{
+                System.out.println("Please Enter Minimum Price > 0: ");
+                min=scan.nextDouble();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(min<=0);
+        do {
+            try{
+                System.out.println("Please enter the maximum price: ");
+                max=scan.nextDouble();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(max<0);
+        displayVehicles(dealership.getVehiclesByPrice(min,max));
+
+    }
     private void processGetByMakeModelRequest() {}
     private void processGetByYearRequest() {}
     private void processGetByColorRequest() {}
