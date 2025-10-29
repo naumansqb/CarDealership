@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -102,7 +103,14 @@ public class UserInterface {
             dealership.setPhoneNumber(scan.nextLine());
         }
     }
-    private void displayVehicles(){
+    private void displayVehicles(List<Vehicle> vehicles){
+        if(vehicles.isEmpty()){
+            System.out.println("No vehicles found");
+            return;
+        }
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle);
+        }
     }
     private void processGetByPriceRequest() {}
     private void processGetByMakeModelRequest() {}
