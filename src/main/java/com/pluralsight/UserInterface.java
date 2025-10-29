@@ -146,7 +146,19 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByPrice(min,max));
 
     }
-    private void processGetByMakeModelRequest() {}
+    private void processGetByMakeModelRequest() {
+        String make="";
+        String model="";
+        do{
+            System.out.println("Please enter make: ");
+            make=scan.nextLine();
+        }while(make.isEmpty());
+        do{
+            System.out.println("Please enter model: ");
+            model=scan.nextLine();
+        }while(model.isEmpty());
+        displayVehicles(dealership.getVehiclesByMakeModel(make,model));
+    }
     private void processGetByYearRequest() {}
     private void processGetByColorRequest() {}
     private void processGetByMileageRequest() {}

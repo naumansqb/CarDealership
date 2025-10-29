@@ -72,11 +72,17 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
-        return null;
+        List<Vehicle> list= new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if(vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
+                list.add(vehicle);
+            }
+        }
+        return list;
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {
-        return null;
+
     }
 
     public List<Vehicle> getVehiclesByColor(String color) {
