@@ -16,6 +16,7 @@ public class UserInterface {
 
 
     private void userMenu(){
+        System.out.println("        ______\n       //  ||\\\\ \\\n _____//___||_\\\\ \\___\n )  _          _    \\\n |_/ \\\\________/ \\\\___|\n___\\\\_/________\\\\_/______");
         System.out.println("Welcome to "+dealership.getName());
         boolean isRunning=true;
         while(isRunning) {
@@ -64,6 +65,7 @@ public class UserInterface {
                         break;
                     case 99:
                         scan.close();
+                        System.out.println("Have a great day");
                         isRunning = false;
                         break;
                     default:
@@ -83,21 +85,25 @@ public class UserInterface {
             setUp();
             df.saveDealership(dealership);
             System.out.println("Dealership information was updated successfully");
+            System.out.println("=".repeat(80));
         }
     }
 
     private void setUp(){
         if(dealership.getName()==null){
+            System.out.println("=".repeat(80));
             System.out.println("The name of your dealership was not stored properly\n" +
                     "Please enter the name of your dealership");
             dealership.setName(scan.nextLine());
         }
         if(dealership.getAddress()==null){
+            System.out.println("=".repeat(80));
             System.out.println("The address of your dealership was not stored properly\n" +
                     "Please enter the address of your dealership");
             dealership.setAddress(scan.nextLine());
         }
         if(dealership.getPhoneNumber()==null){
+            System.out.println("=".repeat(80));
             System.out.println("The phone number of your dealership was not stored properly\n" +
                     "Please enter the number of your dealership");
             dealership.setPhoneNumber(scan.nextLine());

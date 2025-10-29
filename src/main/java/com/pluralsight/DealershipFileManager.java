@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class DealershipFileManager {
     public static final String FILE_NAME = "dealership.csv";
@@ -26,7 +24,7 @@ public class DealershipFileManager {
             }
             String[] dealershipTokens = dealershipInfo.split("\\|");
             if (dealershipTokens.length != 3) {
-                System.out.println("Invalid dealership format. You will have the opportunity to update this later.");
+                System.out.println("Invalid dealership format. Please follow the prompts below to update the necessary values");
                 reader.close();
                 return new Dealership(null, null, null);
             }
