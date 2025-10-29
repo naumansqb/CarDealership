@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
-
-    public UserInterface(){}
+    private Scanner scan = new Scanner(System.in);
+    public UserInterface() {}
 
     public void display() {
         init();
         userMenu();
     }
 
-    public void userMenu(){
-        Scanner scan= new Scanner(System.in);
+
+    private void userMenu(){
         System.out.println("Welcome to "+dealership.getName());
         boolean isRunning=true;
         while(isRunning) {
@@ -32,6 +32,7 @@ public class UserInterface {
             System.out.println("Enter choice: ");
             try {
                 int userChoice= scan.nextInt();
+                scan.nextLine();
                 switch (userChoice) {
                     case 1:
                         processGetByPriceRequest();
@@ -61,6 +62,7 @@ public class UserInterface {
                         processRemoveVehicleRequest();
                         break;
                     case 99:
+                        scan.close();
                         isRunning = false;
                         break;
                     default:
@@ -71,8 +73,34 @@ public class UserInterface {
                 scan.nextLine();
             }
         }
+    }
 
+    private void init(){
+        DealershipFileManager df= new DealershipFileManager();
+        dealership= df.getDealership();
+        if((dealership.getName() ==null)||(dealership.getAddress()==null)||(dealership.getPhoneNumber()==null)){
+            setUp();
+            df.saveDealership(dealership);
+            System.out.println("Dealership information was updated successfully");
+        }
+    }
 
+    private void setUp(){
+        if(dealership.getName()==null){
+            System.out.println("The name of your dealership was not stored properly\n" +
+                    "Please enter the name of your dealership");
+            dealership.setName(scan.nextLine());
+        }
+        if(dealership.getAddress()==null){
+            System.out.println("The address of your dealership was not stored properly\n" +
+                    "Please enter the address of your dealership");
+            dealership.setAddress(scan.nextLine());
+        }
+        if(dealership.getPhoneNumber()==null){
+            System.out.println("The phone number of your dealership was not stored properly\n" +
+                    "Please enter the number of your dealership");
+            dealership.setPhoneNumber(scan.nextLine());
+        }
     }
     private void displayVehicles(){
     }
