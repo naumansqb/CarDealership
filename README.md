@@ -1,16 +1,24 @@
-# Project Title
+# Car Dealership Management System
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+This Java console application simulates a dealership inventory management system, which is useful for the employees of a dealership. 
+The application allows users to search, add, and remove vehicles from inventory while maintaining persistent storage in a CSV file. 
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
+- As a user I want to have the option to add vehicles so that my inventory is accurately represented. 
+- As a user, I want each menu option to perform the correct action so that I can see results based on my request.
+- As a user, I would like my dealership information to be stored correctly so that I can access the details and inventory reliably.
+- As a user, I want to remove a vehicle so that my inventory is accurate and so my changes are saved after closing program. 
+- As a user, I want the program to load my dealership information when it starts so that I can interact with my inventory.
+- As a user, I want a display function to show the home screen menu so that I can interact with the dealership program.
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
-
+## Developer Stories
+- As a developer I want to create all the classes required for the dealership application so that the project has a complete structure for initial commit.
+- As a developer I want to create a private helper method that will help me display different lists of vehicle so I don't have to repeat the same logic multiple times.
+- As a developer, I want a method that pulls the full inventory and displays it so that it can be verified that the csv file is loading data to the lists properly.
+- 
 ## Setup
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
@@ -28,41 +36,28 @@ Follow these steps to get your application running within IntelliJ IDEA:
 2. Select "Open" and navigate to the directory where you cloned or downloaded the project.
 3. After the project opens, wait for IntelliJ to index the files and set up the project.
 4. Find the main class with the `public static void main(String[] args)` method.
-5. Right-click on the file and select 'Run 'YourMainClassName.main()'' to start the application.
-
+5. Right-click on the file and select Run `Program.main()` to start the application.
 ## Technologies Used
-
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17 (`openjdk 17.0.12 2024-07-16`)
 
 ## Demo
+#### Find Vehicle by Price Range
+![VehiclesByPrice-converter.gif](VehiclesByPrice-converter.gif)
+### Find Vehicle by Make/Model
+![VehiclesByMakeModel.gif](VehiclesByMakeModel.gif)
+### Additional Search Features (Year, Color, Mileage, Type)
+![AdditionalFeatures.gif](AdditionalFeatures.gif)
+### Add a Vehicle
+![AddVehicle.gif](AddVehicle.gif)
+### Remove a Vehicle
+![removevehicle.gif](removevehicle.gif)
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
 
 ## Future Work
-
-Outline potential future enhancements or functionalities you might consider adding:
-
-- Additional feature to be developed.
-- Improvement of current functionalities.
-
-## Resources
-
-List resources such as tutorials, articles, or documentation that helped you during the project.
-
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
-
-## Team Members
-
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- Implement a graphical user interface (GUI) for better user experience
+- Implement database storage instead of CSV files
+- Add support for multiple dealerships with the ability to switch between them
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- Thank you to Raymond for continuous support and guidance throughout the project.
