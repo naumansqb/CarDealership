@@ -142,7 +142,7 @@ public class UserInterface {
                 System.out.println("Invalid Entry. Please try again");
                 scan.nextLine();
             }
-        }while(max<0);
+        }while(max<=0);
         displayVehicles(dealership.getVehiclesByPrice(min,max));
 
     }
@@ -159,7 +159,31 @@ public class UserInterface {
         }while(model.isEmpty());
         displayVehicles(dealership.getVehiclesByMakeModel(make,model));
     }
-    private void processGetByYearRequest() {}
+    private void processGetByYearRequest() {
+        int min=-1;
+        int max=-1;
+        do {
+            try{
+                System.out.println("Please Enter lower boundary for year: ");
+                min=scan.nextInt();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(min<=0);
+        do {
+            try{
+                System.out.println("Please enter the upper boundary for year: ");
+                max=scan.nextInt();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(max<=0);
+        displayVehicles(dealership.getVehiclesByYear(min,max));
+    }
     private void processGetByColorRequest() {}
     private void processGetByMileageRequest() {}
     private void processGetByTypeRequest() {}
