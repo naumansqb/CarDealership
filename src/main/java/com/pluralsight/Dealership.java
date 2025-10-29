@@ -58,6 +58,16 @@ public class Dealership {
         return false;
     }
 
+    public boolean removeVehicleByVin(int vin) {
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getVin() == vin) {
+                inventory.remove(vehicle);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Vehicle> getVehiclesByPrice(double min, double max) {
         List<Vehicle> list= new ArrayList<>();
         for (Vehicle vehicle : inventory) {

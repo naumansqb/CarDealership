@@ -316,7 +316,28 @@ public class UserInterface {
         System.out.println("Vehicle added successfully!");
     }
     private void processRemoveVehicleRequest() {
-
+        System.out.println("Displaying Vehicles To Remove");
+        System.out.println("=".repeat(120));
+        displayVehicles(dealership.getAllVehicles());
+        System.out.println("=".repeat(120));
+        int vin=-1;
+        do {
+            try {
+                System.out.println("Please enter VIN of vehicle you'd like to remove: ");
+                vin = scan.nextInt();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        } while (vin <= 0);
+        if(dealership.removeVehicleByVin(vin)){
+            DealershipFileManager df = new DealershipFileManager();
+            df.saveDealership(dealership);
+            System.out.println("Vehicle with VIN '" + vin + "' has been removed successfully");
+        }else{
+            System.out.println("No matching vehicle to remove.");
+        }
     }
 
 }
