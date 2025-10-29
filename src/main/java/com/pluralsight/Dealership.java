@@ -41,14 +41,6 @@ public class Dealership {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Vehicle> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<Vehicle> inventory) {
-        this.inventory = inventory;
-    }
-
     public List<Vehicle> getAllVehicles() {
         return inventory;
     }
@@ -57,7 +49,12 @@ public class Dealership {
         inventory.add(vehicle);
     }
 
-    public boolean removeVehicleByVin(int vin) {
+    public boolean isVinTaken(int vin) {
+        for (Vehicle vehicle : inventory) {
+            if(vehicle.getVin()==vin){
+                return true;
+            }
+        }
         return false;
     }
 

@@ -229,7 +229,94 @@ public class UserInterface {
         List<Vehicle> v= dealership.getAllVehicles();
         displayVehicles(v);
     }
-    private void processAddVehicleRequest() {}
-    private void processRemoveVehicleRequest() {}
+    private void processAddVehicleRequest() {
+        int vin = -1;
+        int year = -1;
+        String make = "";
+        String model = "";
+        String vehicleType = "";
+        String color = "";
+        int odometer = -1;
+        double price = -1;
+
+        do {
+            try {
+                System.out.println("Please enter VIN: ");
+                vin = scan.nextInt();
+                if(dealership.isVinTaken(vin)){
+                    System.out.println("Please enter another vin. This Vin is already registered to another car.");
+                    vin=-1;
+                }
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        } while (vin <= 0);
+
+        do {
+            try {
+                System.out.println("Please enter year: ");
+                year = scan.nextInt();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        } while (year <= 0);
+
+        do {
+            System.out.println("Please enter make: ");
+            make = scan.nextLine().trim();
+        } while (make.isEmpty());
+
+        do {
+            System.out.println("Please enter model: ");
+            model = scan.nextLine().trim();
+        } while (model.isEmpty());
+
+        do {
+            System.out.println("Please enter type (car, truck, SUV, van): ");
+            vehicleType = scan.nextLine().trim();
+        } while (vehicleType.isEmpty());
+
+        do {
+            System.out.println("Please enter color: ");
+            color = scan.nextLine().trim();
+        } while (color.isEmpty());
+
+        do {
+            try {
+                System.out.println("Please enter mileage: ");
+                odometer = scan.nextInt();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        } while (odometer < 0);
+
+        do {
+            try {
+                System.out.println("Please enter price: ");
+                price = scan.nextDouble();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        } while (price <= 0);
+
+        Vehicle v = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+        dealership.addVehicle(v);
+
+        DealershipFileManager df = new DealershipFileManager();
+        df.saveDealership(dealership);
+
+        System.out.println("Vehicle added successfully!");
+    }
+    private void processRemoveVehicleRequest() {
+
+    }
 
 }
