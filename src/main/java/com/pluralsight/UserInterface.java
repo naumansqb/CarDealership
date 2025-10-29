@@ -192,7 +192,31 @@ public class UserInterface {
         }while(color.isEmpty());
         displayVehicles(dealership.getVehiclesByColor(color));
     }
-    private void processGetByMileageRequest() {}
+    private void processGetByMileageRequest() {
+        int min=-1;
+        int max=-1;
+        do {
+            try{
+                System.out.println("Please Enter lower boundary for mileage: (min >=0)");
+                min=scan.nextInt();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(min<0);
+        do {
+            try{
+                System.out.println("Please enter the upper boundary for mileage: ");
+                max=scan.nextInt();
+                scan.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Invalid Entry. Please try again");
+                scan.nextLine();
+            }
+        }while(max<=0);
+        displayVehicles(dealership.getVehiclesByMileage(min,max));
+    }
     private void processGetByTypeRequest() {}
     private void processAllVehiclesRequest() {
         List<Vehicle> v= dealership.getAllVehicles();
