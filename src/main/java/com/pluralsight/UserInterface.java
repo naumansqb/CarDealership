@@ -118,7 +118,10 @@ public class UserInterface {
     private void processGetByColorRequest() {}
     private void processGetByMileageRequest() {}
     private void processGetByTypeRequest() {}
-    private void processAllVehiclesRequest() {}
+    private void processAllVehiclesRequest() {
+        List<Vehicle> v= dealership.getAllVehicles();
+        displayVehicles(v);
+    }
     private void processAddVehicleRequest() {}
     private void processRemoveVehicleRequest() {}
 
