@@ -3,7 +3,7 @@ package com.pluralsight;
 import java.io.*;
 
 public class DealershipFileManager {
-    public static final String FILE_NAME = "dealership.csv";
+    private static final String FILE_NAME = "dealership.csv";
 
     public Dealership getDealership() {
         File file = new File(FILE_NAME);
