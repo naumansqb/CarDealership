@@ -6,9 +6,9 @@ public class Vehicle {
     private int year;
     private String make;
     private String model;
-    private String type;
+    private String vehicleType;
     private String color;
-    private int mileage;
+    private int odometer;
     private double price;
 
     public Vehicle(int vin, int year, String make, String model, String type, String color, int mileage, double price) {
@@ -16,9 +16,9 @@ public class Vehicle {
         this.year = year;
         this.make = make;
         this.model = model;
-        this.type = type;
+        this.vehicleType = type;
         this.color = color;
-        this.mileage = mileage;
+        this.odometer = mileage;
         this.price = price;
     }
 
@@ -54,12 +54,20 @@ public class Vehicle {
         this.model = model;
     }
 
-    public String getType() {
-        return type;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public int getOdometer() {
+        return odometer;
+    }
+
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
     }
 
     public String getColor() {
@@ -69,15 +77,6 @@ public class Vehicle {
     public void setColor(String color) {
         this.color = color;
     }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -88,15 +87,7 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "vin=" + vin +
-                ", year=" + year +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", color='" + color + '\'' +
-                ", mileage=" + mileage +
-                ", price=" + price +
-                '}';
+        return String.format("%-8d | %4d | %-10s | %-14s | %-6s | %-10s | %,8d | $%,9.2f",
+                vin, year, make, model, vehicleType, color, odometer, price);
     }
 }
