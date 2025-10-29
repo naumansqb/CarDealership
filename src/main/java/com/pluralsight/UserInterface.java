@@ -151,11 +151,11 @@ public class UserInterface {
         String model="";
         do{
             System.out.println("Please enter make: ");
-            make=scan.nextLine();
+            make=scan.nextLine().trim();
         }while(make.isEmpty());
         do{
             System.out.println("Please enter model: ");
-            model=scan.nextLine();
+            model=scan.nextLine().trim();
         }while(model.isEmpty());
         displayVehicles(dealership.getVehiclesByMakeModel(make,model));
     }
@@ -184,7 +184,14 @@ public class UserInterface {
         }while(max<=0);
         displayVehicles(dealership.getVehiclesByYear(min,max));
     }
-    private void processGetByColorRequest() {}
+    private void processGetByColorRequest() {
+        String color="";
+        do{
+            System.out.println("Please enter the color: ");
+            color=scan.nextLine().trim();
+        }while(color.isEmpty());
+        displayVehicles(dealership.getVehiclesByColor(color));
+    }
     private void processGetByMileageRequest() {}
     private void processGetByTypeRequest() {}
     private void processAllVehiclesRequest() {

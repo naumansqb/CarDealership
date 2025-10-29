@@ -34,14 +34,14 @@ public class DealershipFileManager {
                 String[] vehicleTokens = line.split("\\|");
                 if (vehicleTokens.length == 8) {
                     try {
-                        int vin = Integer.parseInt(vehicleTokens[0]);
-                        int year = Integer.parseInt(vehicleTokens[1]);
-                        String make = vehicleTokens[2];
-                        String model = vehicleTokens[3];
-                        String vehicleType = vehicleTokens[4];
-                        String color = vehicleTokens[5];
-                        int odometer = Integer.parseInt(vehicleTokens[6]);
-                        double price = Double.parseDouble(vehicleTokens[7]);
+                        int vin = Integer.parseInt(vehicleTokens[0].trim());
+                        int year = Integer.parseInt(vehicleTokens[1].trim());
+                        String make = vehicleTokens[2].trim();
+                        String model = vehicleTokens[3].trim();
+                        String vehicleType = vehicleTokens[4].trim();
+                        String color = vehicleTokens[5].trim();
+                        int odometer = Integer.parseInt(vehicleTokens[6].trim());
+                        double price = Double.parseDouble(vehicleTokens[7].trim());
 
                         Vehicle v = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
                         ds.addVehicle(v);
