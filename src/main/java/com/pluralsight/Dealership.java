@@ -8,7 +8,7 @@ public class Dealership {
     private String name;
     private String address;
     private String phoneNumber;
-    private ArrayList<Vehicle> inventory;
+    private List<Vehicle> inventory;
 
     public Dealership(String name, String address, String phoneNumber) {
         this.name = name;
@@ -41,7 +41,7 @@ public class Dealership {
         this.phoneNumber = phoneNumber;
     }
 
-    public ArrayList<Vehicle> getInventory() {
+    public List<Vehicle> getInventory() {
         return inventory;
     }
 
@@ -54,6 +54,7 @@ public class Dealership {
     }
 
     public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
     }
 
     public boolean removeVehicleByVin(int vin) {

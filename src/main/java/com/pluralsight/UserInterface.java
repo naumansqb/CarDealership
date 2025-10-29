@@ -81,7 +81,7 @@ public class UserInterface {
     private void init(){
         DealershipFileManager df= new DealershipFileManager();
         dealership= df.getDealership();
-        if((dealership.getName() ==null)||(dealership.getAddress()==null)||(dealership.getPhoneNumber()==null)){
+        if((dealership.getName().isEmpty())||(dealership.getAddress().isEmpty())||(dealership.getPhoneNumber().isEmpty())){
             setUp();
             df.saveDealership(dealership);
             System.out.println("Dealership information was updated successfully");
@@ -90,19 +90,19 @@ public class UserInterface {
     }
 
     private void setUp(){
-        if(dealership.getName()==null){
+        if(dealership.getName().isEmpty()){
             System.out.println("=".repeat(80));
             System.out.println("The name of your dealership was not stored properly\n" +
                     "Please enter the name of your dealership");
             dealership.setName(scan.nextLine());
         }
-        if(dealership.getAddress()==null){
+        if(dealership.getAddress().isEmpty()){
             System.out.println("=".repeat(80));
             System.out.println("The address of your dealership was not stored properly\n" +
                     "Please enter the address of your dealership");
             dealership.setAddress(scan.nextLine());
         }
-        if(dealership.getPhoneNumber()==null){
+        if(dealership.getPhoneNumber().isEmpty()){
             System.out.println("=".repeat(80));
             System.out.println("The phone number of your dealership was not stored properly\n" +
                     "Please enter the number of your dealership");
@@ -114,6 +114,8 @@ public class UserInterface {
             System.out.println("No vehicles found");
             return;
         }
+        System.out.println("VIN      | Year | Make       | Model          | Type   | Color      | Mileage  | Price");
+        System.out.println("---------|------|------------|----------------|--------|------------|----------|------------");
         for (Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
         }
